@@ -8,7 +8,7 @@ export function Header(){
             <h1 className="font-bold text-white text-3xl">Rick&Morty Wiki</h1>
             <nav className="flex  flex-row gap-10 text-white text-2xl">
                 <NavLink
-                    to='/characters'
+                    to='/'
                     className={({ isActive }) =>
                         `${isActive ? 'underline cursor-default'  : ' hover:text-gray-400'}`
                     }
