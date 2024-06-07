@@ -1,17 +1,20 @@
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 
 export function Header(){
 
     return(
-        <header className="justify-between px-22">
-            <h1>Rick and Morty Wiki</h1>
-            <nav>
-                <ul>
-                    <li><Link to='/characters'>Characters</Link></li>
-                    <li><Link to='/characters'>Locations</Link></li>
-                    <li><Link to='/characters'>Episodes</Link></li>
-                </ul>
+        <header className="flex flex-row justify-between items-center px-24 py-8 bg-black">
+            <h1 className="font-bold text-white text-3xl">Rick&Morty Wiki</h1>
+            <nav className="flex  flex-row gap-10 text-white text-2xl">
+                <NavLink
+                    to='/characters'
+                    className={({ isActive }) =>
+                        `${isActive ? 'underline cursor-default'  : ' hover:text-gray-400'}`
+                    }
+                >
+                    Characters
+                </NavLink>
             </nav>
         </header>
     )

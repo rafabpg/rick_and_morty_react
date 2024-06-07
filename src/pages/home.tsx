@@ -8,7 +8,7 @@ export function HomePage(){
     return(
 
         <div>
-            {data}
+            teste
         </div>
 
     )
