@@ -5,12 +5,14 @@ import { CardElement } from "@/components/cardElement"
 
 import { useEffect, useState } from "react"
 import { PaginationElement } from "@/components/paginationElement"
+import { SearchElement } from "@/components/searchElement"
   
 
 export function HomePage(){
-    const [pageNumber, setPageNumber] = useState(1)
-    const {data,error,isFetching} = useFetch<AllCharacters>(`/character`,`?page=${pageNumber}`)
-
+    const [pageNumber, setPageNumber] = useState<number>(1)
+    const [name,setName] =  useState<string>("")
+    const {data,error,isFetching} = useFetch<AllCharacters>(`/character`,`?page=${pageNumber}&name=${name}`)
+    // &status=${status}&gender=${gender}&species=${species}
     const nextPage = () => {
         setPageNumber(prevPageNumber => prevPageNumber + 1);
     };
@@ -20,6 +22,11 @@ export function HomePage(){
             setPageNumber(prevPageNumber => prevPageNumber - 1);
         }
     };
+
+    const handleSearch = (searchValue:string) => {
+        setName(searchValue); 
+    };
+
     return(
         <>
             {isFetching ? (
@@ -27,7 +34,8 @@ export function HomePage(){
             ):(
                 <section>
                 <h1 className="text-center text-black font-bold text-3xl py-5" >Characters</h1>
-                    <div className="">
+                    <div >
+                        <SearchElement onSearch={handleSearch} />
                     <div>
                     </div>
                         <div  className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-24 p-4">
